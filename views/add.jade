@@ -1,0 +1,41 @@
+doctype html
+html
+head
+  meta(charset='utf-8')
+body
+  h1
+    a(href='/review') dept.Computer_science Lecture Note
+  ul
+    each title in titles
+      li
+        a(href='/review/'+title.title)= title.title
+  artcle
+    if(e_review)
+      form(action='/review/edit/'+e_review[0].id method='post')
+        p
+          input(type='text', name='title', size='40', value='#{e_review[0].title}', require)
+        p
+          input(type='number', name='year', min='2000', max='2100', size='40', value='#{e_review[0].year}', require)
+        p
+          input(type='number', name='semester', min='1', max='4', size='40', value='#{e_review[0].semester}', require)
+        p
+          input(type='text', name='prof',  size='40', value='#{e_review[0].prof}', require)
+        p
+          textarea(name='review', cols='60', rows='30', require) #{e_review[0].review}
+        p
+          input(type='submit' value='edit')
+
+    else
+      form(action='/review' method='post')
+        p
+          input(type='text', name='title', placeholder='title', size='40', require)
+        p
+          input(type='number', name='year', min='2000', max='2100', placeholder='year', size='40', require)
+        p
+          input(type='number', name='semester', min='1', max='4', placeholder='semester', size='40', require)
+        p
+          input(type='text', name='prof', placeholder='professor', size='40', require)
+        p
+          textarea(name='review', placeholder='review...' , cols='60', rows='30')
+        p
+          input(type='submit' value='create')

@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+  body
+    h1
+      a(href='/review') dept.Computer_science Lecture Review
+    ul
+      each title in titles
+        li
+          a(href='/review/'+title.title)= title.title
+    artcle
+      if title_reviews
+        div
+          table
+            thead
+              tr
+                h3 #{title_reviews[0].title} REVIEWS
+            tbody
+              tr
+                th YEAR
+                th SEMESTER
+                th DATE
+                th PROFESSOR
+                th REVIEW
+              each title_review in title_reviews
+                tr
+                  td(style='border:1px gray solid') #{title_review.year}
+                  td(style='border:1px gray solid') #{title_review.semester}
+                  td(style='border:1px gray solid') #{title_review.r_date}
+                  td(style='border:1px gray solid') #{title_review.prof}
+                  td(style='border:1px gray solid') #{title_review.review}
+                  td(style='border:1px gray solid')
+                    a(href='/review/edit/'+title_review.id) Edit Review
+
+      else
+        h3 Lecture Review
+        | Please Click or Create Lecture Review.
+
+
+    p
+      a(href='/review/add', method=post) Create Lecture Review
