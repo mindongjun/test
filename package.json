@@ -1,10 +1,10 @@
 {
   "name": "temp",
   "version": "1.0.0",
-  "description": "temp ",
-  "main": "index.js",
+  "description": "temp",
+  "main": "app.js",
   "scripts": {
-"node app.js --scripts-prepend-node-path"
+"start": "node app.js"
 },
   "author": "",
   "license": "ISC",
